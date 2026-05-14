@@ -47,7 +47,9 @@ export default function LiveModel() {
   useEffect(() => {
     async function fetchSession() {
       try {
-        const response = await fetch('/api/session');
+        const response = await fetch('/api/session', {
+          headers: { "ngrok-skip-browser-warning": "true" }
+        });
         const data = await response.json();
         setDepartment(data.department || "Guest");
         setRole(data.role || "Guest"); // 🌟 Fetch the role
@@ -59,7 +61,9 @@ export default function LiveModel() {
   }, []);
 
   useEffect(() => {
-    fetch("/api/facility_home_data")
+    fetch("/api/facility_home_data", {
+      headers: { "ngrok-skip-browser-warning": "true" }
+    })
       .then(res => res.ok ? res.json() : null)
       .then(data => {
         if (data && data.rooms) setRoomsData(data.rooms);
