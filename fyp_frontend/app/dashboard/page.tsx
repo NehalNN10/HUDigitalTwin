@@ -31,7 +31,9 @@ export default function Dashboard() {
 
   // --- Initial Data Fetch ---
   useEffect(() => {
-    fetch("/api/facility_home_data")
+    fetch("/api/facility_home_data", {
+      headers: { "ngrok-skip-browser-warning": "true" }
+    })
       .then((res) => res.json())
       .then((data) => {
         const sortedRooms = (data.rooms || []).sort((a: any, b: any) => 
@@ -47,7 +49,9 @@ export default function Dashboard() {
   }, []);
 
   useEffect(() => {
-      fetch("/api/security_home_data")
+      fetch("/api/security_home_data", {
+            headers: { "ngrok-skip-browser-warning": "true" }
+          })
         .then((res) => res.json())
         .then((data) => {
           setSecurityStaffList(data.staff_list || []);
