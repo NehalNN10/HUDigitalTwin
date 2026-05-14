@@ -1,0 +1,686 @@
+@import "tailwindcss";
+
+/* 1. Default Light Theme Variables */
+:root {
+  --bg-color: #fafafa;
+  --text-color: #000;
+  --sub-text-color:hsl(0, 0%, 27%);
+  --primary-color: #0b6;
+  --primary-text-color: #fff;
+  --surface-color: rgba(255, 255, 255, 0.6);
+  font-family: var(--font-league-spartan), sans-serif;
+}
+
+/* 2. Dark Theme Overrides */
+body.dark-mode {
+  --bg-color: #121212;
+  --text-color: #fff;
+  --sub-text-color: #aaa;
+  --primary-color: #0f8;
+  --primary-text-color: #000;
+  --surface-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+/* 3. Apply the variables to your elements */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color) !important;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+  margin: 0; 
+  font-family: 'League Spartan', sans-serif !important; 
+  overflow-y: auto;
+}
+
+.card {
+  background-color: var(--surface-color);
+}
+
+button {
+    font-family: 'League Spartan', sans-serif !important;
+    border: none;
+}
+
+input[type="text"], input[type="password"], input[type="number"], select, input[type="email"] {
+    font-family: 'League Spartan', sans-serif !important;
+    background: var(--surface-color);
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid var(--sub-text-color);
+    color: var(--text-color) !important;
+    transition: all 0.3s ease;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+h2 {
+    font-size: 1.75rem;
+    margin: 0;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+h4 {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+h5 {
+    font-size: 1rem;
+    margin: 0;
+}
+
+input[type="text"]:hover, input[type="password"]:hover, input[type="number"]:hover, select:hover, input[type="email"]:hover, input[type="text"]:focus, input[type="password"]:focus, input[type="number"]:focus, select:focus, option:focus, input[type="email"]:focus {
+    border-color: var(--primary-color) !important;
+    color: var(--primary-color) !important;
+    box-shadow: 0 0 20px var(--primary-color) !important;
+    cursor: pointer;
+}
+
+option {
+    background-color: var(--bg-color) !important;
+}
+
+table {
+    border-right: none;
+    border-left: none;
+    border-collapse: collapse; 
+    border-radius: 8px;
+    border-style: hidden; 
+    box-shadow: 0 0 20px var(--sub-text-color) inset; 
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+
+}
+
+.iot {
+    @apply hidden min-[50rem]:inline;
+}
+
+.th-small-iot {
+    @apply inline min-[50rem]:hidden mx-auto;
+}
+
+.small {
+    @apply min-[50rem]:hidden flex items-center;
+}
+
+.small-iot {
+    /* 1. Changed flex to inline-flex */
+    /* 2. Added w-fit to stop the stretching */
+    /* 3. Added mx-auto to keep it perfectly centered under the header! */
+    @apply flex items-center justify-center gap-1 w-fit mx-auto; 
+}
+
+tr {
+    border-radius: 8px;
+    border: 1px solid var(--sub-text-color);
+}
+
+.alert-time {
+    flex: 1; 
+    text-align: right;
+    color: red; 
+    font-weight: bold;
+}
+
+.box {
+    flex-grow: 1; 
+    flex-shrink: 1;  
+    max-height: 90vh !important; 
+    overflow-y: auto !important;
+    overflow-x: auto !important;
+}
+
+.boxes {
+    @apply items-start gap-5 flex-wrap;
+    width: 100%; 
+    align-items: normal !important; 
+    margin-top: 0 !important; 
+    padding: 20px;
+}
+
+.btn {
+    font-family: 'League Spartan', sans-serif !important;
+    background: none;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid var(--sub-text-color);
+    margin: 20px;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    box-shadow: 0 0 20px var(--primary-color);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-auto {
+  width: auto !important;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.btn-base {
+    @apply overflow-hidden whitespace-nowrap transition-all duration-300 ease-in-out;
+}
+
+.btn-active {
+    @apply max-w-50 opacity-100 ml-2;
+}
+
+.btn-inactive {
+    @apply max-w-0 opacity-0 group-hover:max-w-50 group-hover:opacity-100 group-hover:ml-2;
+}
+
+.btn-black {
+    background: var(--surface-color);
+    backdrop-filter: blur(1rem) !important;
+    border: 1px solid var(--text-color) !important;
+    color: var(--text-color) !important;
+}
+
+.btn-black:hover {
+    box-shadow: 0 0 20px var(--primary-color) !important;
+    border: 1px solid var(--primary-color) !important;
+    color: var(--primary-color) !important;
+    cursor: pointer;
+}
+
+.btn-blue {
+    background-color: #6666ff !important;
+    border: 1px solid var(--text-color) !important;
+    color: white !important;
+}
+
+.btn-blue:hover {
+    background-color: #6666ff !important;
+    box-shadow: 0 0 20px rgba(102, 102, 255, 0.6) !important;
+    border: 1px solid var(--text-color) !important;
+    color: #ffffff !important;
+    cursor: pointer;
+}
+
+.btn-green {
+    background-color: #00ff88 !important;
+    border: 1px solid var(--text-color) !important;
+    color: #000 !important;
+}
+
+.btn-green:hover {
+    background-color: #00ff88 !important;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.6) !important;
+    border: 1px solid var(--text-color) !important;
+    color: #000000 !important;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #00ff88  !important;
+    box-shadow: 0 0 20px #00ff88  !important;
+    border: 1px solid var(--text-color) !important;
+    color: #00ff88  !important;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--primary-color) !important;
+    border: 1px solid var(--text-color) !important;
+    color: var(--primary-text-color) !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-color) !important;
+    box-shadow: 0 0 20px var(--primary-color) !important;
+    border: 1px solid var(--text-color) !important;
+    color: var(--primary-text-color) !important;
+    cursor: pointer;
+}
+
+.btn-header {
+    display: flex;
+    text-decoration: none;
+    font-size: 1.3rem;
+    padding: 10px 15px;
+    color: var(--text-color);
+    border-radius: 8px;
+    background: transparent;
+    transition: all 0.3s ease;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-header:hover {
+    color: var(--primary-color);
+    font-weight: bold;
+    box-shadow: 0 0 0px var(--primary-color) !important;
+    cursor: pointer;
+}
+
+.btn-list {
+    flex-basis: 2.5rem !important; 
+    margin: 0; 
+    padding: 5px 5px;
+}
+
+.btn-red {
+    background-color: #ff3333 !important;
+    border: 1px solid var(--text-color);
+    color: white;
+}
+
+.btn-red:hover {
+    background-color: #ff3333 !important;
+    box-shadow: 0 0 20px rgba(255, 51, 51, 0.6) !important;
+    border: 1px solid var(--text-color) !important;
+    color: #fff !important;
+    cursor: pointer;
+}
+
+
+.btn-yellow {
+    background-color: #ffcc33 !important;
+    border: 1px solid var(--text-color);
+    color: #000 !important;
+}
+
+.btn-yellow:hover {
+    background-color: #ffcc33 !important;
+    box-shadow: 0 0 20px rgba(255, 204, 51, 0.6) !important;
+    border: 1px solid var(--text-color) !important;
+    color: #000 !important;
+    cursor: pointer;
+}
+
+.content {
+    @apply max-h-125 overflow-hidden;
+    opacity: 1;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.center {
+    justify-content: center; 
+    align-items: center;
+}
+
+/* Checklist Container Items */
+.checklist-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    padding: 5px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.checklist-item:hover {
+    background-color: var(--bg-color);
+}
+
+/* Checklist Checkbox */
+.checklist-checkbox {
+    margin-right: 5px !important;
+    width: auto !important; /* Override global input width */
+    flex: none;
+    cursor: pointer;
+}
+
+/* Checklist Label */
+.checklist-label {
+    color: var(--text-color);
+    cursor: pointer;
+    user-select: none; /* Prevents text highlighting when clicking repeatedly */
+}
+
+/* Error Message Style */
+.checklist-error {
+    color: #ff4444;
+    font-style: italic;
+    padding: 10px;
+    text-align: center;
+}
+
+.crosshair {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 7px;
+    height: 7px;
+    background-color: white; 
+    border-radius: 50%; 
+    transform: translate(-50%, -50%); 
+    pointer-events: none; 
+    z-index: 10;
+    border: 2px solid rgba(0,0,0,1);
+}
+
+.content-expand {
+    @apply grid transition-all duration-300 ease-in-out
+}
+
+.expanded {
+    @apply grid-rows-[1fr] opacity-100 p-4! pt-0!;
+}
+
+.collapsed {
+    @apply grid-rows-[0fr] opacity-0 mt-0 pointer-events-none px-4!;
+}
+
+.faded-font {
+    color: var(--sub-text-color); 
+}
+
+.fill {
+    @apply px-3! py-1.5! text-black font-bold;
+    border-radius: 20px;
+}
+
+.float {
+    @apply absolute transition-all duration-300 ease-in-out h-full z-40 shrink-0
+}
+
+.float-width {
+    width: 25vw !important;
+    max-width: 30rem !important;
+    min-width: 17rem !important;
+}
+
+.font-size-1_4 {
+    font-size: 1.4rem;
+}
+
+.font-size-1_2 {
+    font-size: 1.2rem;
+}
+
+.formInput {
+    @apply w-2/3 text-black h-[50px] block; 
+}
+
+.header {
+    @apply flex justify-between items-center cursor-pointer select-none border-b border-transparent hover:border-[--primary-color] transition-all pb-1;
+}
+
+.login {
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+
+.login-label {
+    width: 10rem; 
+    font-size: 1.5rem;
+    text-align: left;
+}
+
+.login-input {
+    flex: 2; 
+    font-size: 1.2rem;
+    margin-left: 10px;
+}
+
+.main {
+    display: flex;
+    height: calc(100vh - 4.5rem);
+    position: relative;
+}
+
+.main-home {
+    padding: 1rem 2vw !important;
+}
+
+nav {
+    /* WE DELETED POSITION: STICKY, TOP, AND Z-INDEX FROM HERE */
+    width: 100%;
+    height: 4.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 2rem; 
+    padding-right: 2rem;
+    background: var(--surface-color);
+    backdrop-filter: blur(20px) !important;    
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.nav-left {
+    font-weight: bold;
+    min-width: 15rem;
+}
+
+.nav-right {
+    justify-content: flex-end;
+    flex-basis: 12.5rem;
+}
+
+.nav-center {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.modal { 
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    padding: 40px;
+    @apply max-w-125;
+    width: 90%;
+    box-shadow: 0 0 50px var(--primary-color);
+    background: var(--surface-color);
+    animation: slideUp 0.3s ease-in-out;
+}
+
+.modal-header {
+    font-weight: bold;
+    text-align: center;
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--surface-color);
+    z-index: 999;
+    animation: 0.3s ease-in-out;
+}
+
+.modal-overlay.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-headers {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-evenly;
+}
+
+.no-margin {
+    margin: 0 !important;
+}
+
+.no-margin-top {
+    margin-top: 0 !important;
+}
+
+.flex-wrap {
+    flex-wrap: wrap !important;
+}
+
+.outer {
+    box-shadow: 0 0 7px var(--bg-color);
+    border: 1px solid var(--sub-text-color);
+}
+
+.outer:hover {
+    box-shadow: 0 0 7px var(--primary-color) !important;
+    border: 1px solid var(--primary-color) !important;
+}
+
+.row { 
+    display: flex; 
+    align-items: center;
+    justify-content: space-between; 
+    margin-top: 15px;
+}
+
+.scrubber {
+    @apply grow ml-1 h-full bg-[var(--text-color)] border border-[var(--text-color)] rounded accent-[var(--primary-color)] cursor-pointer hover:border-[var(--primary-color)] hover:bg-[var(--primary-color)] transition-all;
+}
+
+.scrubber-text {
+    @apply ml-2 bg-[var(--sub-text-color)] border border-[var(--sub-text-color)] rounded text-[var(--primary-color)] font-bold text-center w-17 py-1! px-0;
+}
+
+.selected {
+    border: 2px solid var(--primary-color);
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    color: var(--primary-text-color);
+}
+
+.selected:hover {
+    border: 2px solid var(--primary-color);
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    color: var(--primary-text-color);
+}
+
+.side-nav {
+    @apply mt-0! flex items-center font-bold justify-between;
+
+    padding: 0.5rem 2rem;
+    height: 3rem !important;
+    font-size: 1.6rem;
+    background-color: var(--primary-color);
+    color: var(--primary-text-color);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.sidebar-toggle {
+    @apply absolute top-8 -right-8 z-50 bg-[var(--primary-color)] text-[var(--primary-text-color)] py-3 px-1 rounded-r-lg transition-colors flex items-center justify-center cursor-pointer;
+}
+
+.sub-text {
+    color: var(--sub-text-color);
+}
+
+.table {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.tracker-ui {
+    background: var(--surface-color);
+    backdrop-filter: blur(1rem) !important;
+    color: var(--text-color);
+    margin-top: 10px;
+    border-radius: 8px;
+    padding: 1.5rem;
+    font-family: 'League Spartan';
+    pointer-events: none;
+    border: 1px solid var(--sub-text-color);
+    pointer-events: auto !important; /* CRITICAL: Allows clicking the header */
+    transition: all 0.3s ease;
+    overflow: hidden; /* Needed for the slide animation */
+}
+
+#model-container {
+    @apply relative flex-1 w-full h-full overflow-hidden min-h-0;
+}
+#float {
+    position: absolute;
+    padding: 20px;
+    z-index: 100;
+    width: 25vw;
+    min-width: 17rem;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: transparent; 
+    border: none;
+    pointer-events: none;
+}
+
+#roomChecklist {
+    @apply max-h-37.5;
+    overflow-y: auto; 
+    background: var(--surface-color); 
+    padding: 10px; 
+    border: 1px solid var(--sub-text-color); 
+    border-radius: 5px;
+}
+
+#roomChecklistContainer {
+    display: none; 
+    width: max-content; 
+    margin-top: 5px; 
+    margin-left: auto;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+::-webkit-scrollbar-track {
+    background: transparent !important; 
+}
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color); 
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    /* Mixes your primary color with 20% black */
+    background: color-mix(in srgb, var(--primary-color), black 20%); 
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+html {
+    scrollbar-width: thin; /* Makes the scrollbar 7px/thin */
+    scrollbar-color: var(--primary-color) transparent !important; /* Thumb color, then Track color */
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
