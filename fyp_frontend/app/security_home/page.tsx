@@ -21,7 +21,10 @@ export default function SecurityHome() {
 
   // --- Initial Data Fetch ---
   useEffect(() => {
-    fetch("/api/security_home_data")
+    fetch("/api/security_home_data", {
+      method: "GET",
+      headers: { "ngrok-skip-browser-warning": "true" }
+    })
       .then((res) => res.json())
       .then((data) => {
         setStaffList(data.staff_list || []);
@@ -73,7 +76,7 @@ export default function SecurityHome() {
          if (currentOccupancy === 0) return;
         return fetch('/api/send_emergency_alert', { 
           method: 'POST', 
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
           body: JSON.stringify({ 
             room_number: room.room_id, 
             occupancy_count: currentOccupancy

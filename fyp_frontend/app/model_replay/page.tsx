@@ -20,7 +20,11 @@ export default function ModelReplay() {
   useEffect(() => {
     async function fetchSession() {
       try {
-        const response = await fetch('/api/session');
+        const response = await fetch('/api/session', {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+            credentials: 'include' 
+        });
         const data = await response.json();
         setDepartment(data.department || "Guest");
       } catch (error) {

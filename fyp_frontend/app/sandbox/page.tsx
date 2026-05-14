@@ -48,7 +48,11 @@ export default function SandboxModel() {
   useEffect(() => {
     async function fetchSession() {
       try {
-        const response = await fetch('/api/session');
+        const response = await fetch('/api/session', {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+            credentials: 'include' 
+        });
         const data = await response.json();
         setDepartment(data.department || "Guest");
       } catch (error) {
@@ -117,7 +121,7 @@ export default function SandboxModel() {
     e.preventDefault();
     const res = await fetch('/api/send_facilities_alert', {
       method: 'POST', 
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
       body: JSON.stringify({ 
         room_number: emergencyForm.roomNumber, 
         alert_type: emergencyForm.alertType,

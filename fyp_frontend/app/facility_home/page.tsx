@@ -23,7 +23,9 @@ export default function FacilityHome() {
 
   // --- Initial Data Fetch ---
   useEffect(() => {
-    fetch("/api/facility_home_data")
+    fetch("/api/facility_home_data", {
+      headers: { "ngrok-skip-browser-warning": "true" }
+    })
       .then((res) => res.json())
       .then((data) => {
         setRoomsData(data.rooms || []);
@@ -67,13 +69,11 @@ export default function FacilityHome() {
     e.preventDefault();
     const res = await fetch('/api/send_facilities_alert', {
       method: 'POST', 
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ 
-        room_number: emergencyForm.roomNumber, 
-        alert_type: emergencyForm.alertType,
-        time_since: emergencyForm.timeSince,
-        description: emergencyForm.description 
-      })
+      headers: { 
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true' 
+      },
+      body: JSON.stringify({ ...emergencyForm })
     });
     
     if (res.ok) {

@@ -21,7 +21,7 @@ export default function DigitalTwinModel() {
       try {
         const response = await fetch('/api/session', {
             method: 'GET',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
             credentials: 'include' 
         });
         

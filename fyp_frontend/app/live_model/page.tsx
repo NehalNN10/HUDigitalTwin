@@ -48,7 +48,9 @@ export default function LiveModel() {
     async function fetchSession() {
       try {
         const response = await fetch('/api/session', {
-          headers: { "ngrok-skip-browser-warning": "true" }
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+            credentials: 'include' 
         });
         const data = await response.json();
         setDepartment(data.department || "Guest");
@@ -82,7 +84,7 @@ export default function LiveModel() {
     try {
       await fetch('/api/send_emergency_alert', { 
         method: 'POST', 
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
         body: JSON.stringify({ 
           // Use the ESP32 ID if available, otherwise fallback to a generic name
           room_number: 'C-067', 
