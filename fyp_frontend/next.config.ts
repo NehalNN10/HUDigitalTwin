@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: "http://127.0.0.1:1767/api/:path*", // Proxies all API calls to Flask
+        destination: 'https://pretended-surgery-likely.ngrok-free.dev/:path*', // Proxies all API calls to Flask
       },
     ];
   },
