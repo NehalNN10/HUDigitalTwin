@@ -102,7 +102,9 @@ export default function LiveModel() {
   // 2. THE WEBSOCKET CONNECTION
   // ==========================================
   useEffect(() => {
-    const socket = io('https://pretended-surgery-likely.ngrok-free.dev');
+    const socket = io('https://pretended-surgery-likely.ngrok-free.dev', {
+      transports: ['websocket'] // 🌟 Force WebSocket to completely bypass the ngrok HTTP warning!
+    });
 
     socket.on('connect', () => {
       console.log('✅ Connected to Flask WebSocket Server!');
