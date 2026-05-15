@@ -13,7 +13,7 @@ export const playback = {
     showHeatmap: false
 };
 
-export const tracker = `http://localhost:1767/active_files/combined_tracks_1234.csv`;
+export const tracker = './active_files/combined_tracks_1234.csv';
 export const globalCount = 18;
 
 export const raycaster = new THREE.Raycaster();
