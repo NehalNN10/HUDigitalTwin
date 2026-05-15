@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import FormRow from "../components/FormRow";
-import IntButton from "@/components/IntButton";
+import IntButton from "../components/IntButton";
 import { Moon, Sun, User, Lock, Activity, Radar, Wind, Box } from "lucide-react";
 
 export default function Login() {

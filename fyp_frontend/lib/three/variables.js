@@ -28,7 +28,9 @@ export async function initLiveVariables() {
 
 export async function getRoomData(roomId) {
     try {
-        const response = await fetch(`/api/room_data?room_id=${roomId}`);
+        const response = await fetch(`/api/room_data?room_id=${roomId}`, {
+            headers: { "ngrok-skip-browser-warning": "true" }
+        });
         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
         const data = await response.json();
         const rows = data.room_data;
@@ -49,7 +51,9 @@ export async function getRoomData(roomId) {
 
 export async function getRoomInfo(roomId) {
     try {
-        const response = await fetch(`/api/room_info?room_id=${roomId}`);
+        const response = await fetch(`/api/room_info?room_id=${roomId}`, {
+            headers: { "ngrok-skip-browser-warning": "true" }
+        });
         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
         return await response.json();
     } catch (error) {
@@ -89,9 +93,9 @@ export function getDate() {
 export function sendFacilitiesAlert(roomId, alertType, timeStr, description) {
     console.warn(`[Sandbox Alert] ${roomId} firing: ${alertType} at ${timeStr}`);
 
-    fetch('http://localhost:1767/api/send_facilities_alert', {
+    fetch('/api/send_facilities_alert', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { "ngrok-skip-browser-warning": "true" },
         body: JSON.stringify({
             room_number: roomId,
             alert_type: alertType,
